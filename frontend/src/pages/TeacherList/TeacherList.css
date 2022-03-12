@@ -61,9 +61,10 @@
     #search-teachers {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      position: absolute;
+      position: relative;
       margin-top: 265px;
       align-self: center;
+      top: -195px;
     }
 
     #search-teachers .input-block {
