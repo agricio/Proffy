@@ -57,8 +57,6 @@ export default class ClassesController {
                 bio,
             });
     
-            console.log(`user id:${insertedUsersIds}`);
-        
             const user_id = insertedUsersIds[0];
         
             const insertedClassesId = await trx('classes').insert({
@@ -79,8 +77,6 @@ export default class ClassesController {
                 };
             });
     
-            console.log(`class schedule:${classSchedule}`);
-        
             await trx('classes_schedule').insert(classSchedule);
         
             await trx.commit();
