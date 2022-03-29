@@ -1,31 +1,53 @@
 import React from 'react';
 
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
-import './TeacherItem.css'
+import api from '../../services/api';
+import './TeacherItem.css';
 
-function TeacherItem() {
+export interface Teacher {
+        id: number;
+        subject : string;
+        cost : number;
+        name : string;
+        avatar : string;
+        whatsapp : string;
+        bio : string;
+}
+
+interface TeacherItemProps {
+        teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+    function creacteNewConnection(){
+        api.post('connections', {
+            user_id: teacher.id,
+        });
+
+    }
+
+
+
+
     return (
         <article className="teacher-item">
         <header>
-            <img src="https://cdn.vox-cdn.com/thumbor/GAI9xVQtPBrX2TZSCtwV5mVIWeg=/0x0:5568x3712/920x613/filters:focal(2858x720:3748x1610):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/62207705/922984782.jpg.0.jpg" alt="asds"/>
+            <img src={teacher.avatar}alt="asds"/>
             <div>
-                <strong>Um cara ai</strong>
-                <span>Quimica</span>
+                <strong>{teacher.name}</strong>
+                <span>{teacher.subject}</span>
             </div>
         </header>
-        <p>
-            ekjhskd kjahsdkjhskd kjahskjd kjhaskjhd kjhaskjhdk dkajhsdk.
-            <br/><br/>
-            kjskjd 2oiooirt lxkcvlkcv.l wpdoupreot .;jlsdhoid pourtklmfgl;kflknld
-        </p>
+        <p>{teacher.bio}</p>
+
         <footer>
             <p>
                 Preco/hora
-                <strong>$ 20.00</strong>
+                <strong>{teacher.cost}</strong>
             </p>
-            <button type="button">
-                <img src={whatsappIcon} alt="entrar em contato"/>
-            </button>
+            <a target='blank' href={`https://wa.me/${teacher.whatsapp}`}>
+                <img src={whatsappIcon} alt="entrar em contato"/> Contato
+            </a>
         </footer>
     </article>
     );
