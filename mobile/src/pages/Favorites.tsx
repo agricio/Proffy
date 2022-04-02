@@ -1,20 +1,16 @@
 import React from 'expo-status-bar';
-import { Text, View , ImageBackground } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import PageHeader from '../components/PageHeader/PageHeader';
 
-import styles from './GiveClassesStyles';
+import styles from './FavoritesStyles';
+
 
 function Favorites () {
-    const { goBack } = useNavigation();
-
-    function handleNavigateGoBack() {
-        goBack();
-    }
 
     return (
         <View style={styles.container}>
-                <Text style={styles.okButtonText}>Favorites</Text>
+            <PageHeader title= 'Meus Proffys Favoritos' />
         </View>
     );
 }

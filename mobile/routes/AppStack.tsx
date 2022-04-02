@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator  } from '@react-navigation/stack';
 
 import Landing from '../src/pages/Landing'
 import GiveClasses from '../src/pages/GiveClasses';
-import StudyTabs from './StudyTabs';
+//import StudyTabs from './StudyTabs';
+import StudyTabsFloat from './StudyTabsFloat';
 
-const { Navigator, Screen } = createNativeStackNavigator();
+const { Navigator, Screen } = createStackNavigator ();
 
 function AppStack() {
     return (
@@ -14,7 +15,7 @@ function AppStack() {
             <Navigator screenOptions={{ headerShown: false }}>
                 <Screen name='Landing' component={Landing}/>
                 <Screen name='GiveClasses' component={GiveClasses}/>
-                <Screen name='Study' component={StudyTabs}/>
+                <Screen name='Study' component={StudyTabsFloat}/>
             </Navigator>
         </NavigationContainer>
 
