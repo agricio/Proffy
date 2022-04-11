@@ -6,6 +6,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#F0F0F0',
     },
 
+    teacherList: {
+        marginTop: -40,
+        padding: 16,
+
+    },
+
 });
 
 export default styles;

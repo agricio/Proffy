@@ -13,6 +13,13 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
 
+    logo: {
+
+        width: '100%',
+        height: 65,
+        resizeMode: 'contain', 
+    },
+
     title: {
         fontFamily: 'Poppins_400Regular',
         color: '#fff',

@@ -15,15 +15,17 @@ function StudyTabsFloat() {
           inactiveBackgroudColor: '#fafafc',
           activeBackgroundColor: '#04d361',
           activeTintColor: '#fff',
-
+          
         }}
-
+        
         appearance={{
           floating: true,
           shadow: true,
+          dotSize: "small",
           whenActiveShow: "label-only",
-        }}
-      >
+          tabBarBackground: 'rgbargba(87, 75, 99, 0.8)',
+          
+        }}>
         <Tabs.Screen
           name="TeacherList"
           component={TeacherList}
@@ -32,7 +34,7 @@ function StudyTabsFloat() {
                 <Ionicons
                     name="ios-easel"
                     size={25}
-                    color= {'#7361B0'}
+                    color= {'#E5DDEB'}
                     focused="focused"
                 />
             )
@@ -47,7 +49,7 @@ function StudyTabsFloat() {
                 <Ionicons
                     name="ios-heart"
                     size={25}
-                    color= {'#7361B0'}
+                    color= {'#E5DDEB'}
                     focused="focused"
                 />
             )

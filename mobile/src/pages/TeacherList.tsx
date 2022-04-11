@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { BorderlessButton, RectButton, ScrollView } from 'react-native-gesture-handler';
 import TeacherItem, { Teacher } from '../components/TeacherItem/TeacherItem';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Feather } from '@expo/vector-icons';
 import { MotiView } from 'moti';
 
@@ -21,24 +21,25 @@ function TeacherList () {
     const [week_day, setWeek_day ] = useState('');
     const [time, setTime ] = useState('');
 
-    useEffect(() => {
+    function loadFavorites(){
         AsyncStorage.getItem('favorites').then(response => {
             if (response) {
-                const favoriteTieachers = JSON.parse(response);
-                const favoriteTeachersId = favoriteTieachers.map( (teacher: Teacher) => {
+                const favoriteTeachers = JSON.parse(response);
+                const favoriteTeachersId = favoriteTeachers.map( (teacher: Teacher) => {
                     return teacher.id
                 });
 
                 setFavorites(favoriteTeachersId);
             }
         });
-    }, []);
-        
+    }
+   
     function handleToggleFiltersVisible(){
         setIsFilterVisible(!isFiltersVisible);
     }
 
     async function handleFilterSubmit() {
+        loadFavorites();
         const response =  await api.get('classes', {
             params: {
                 subject,
@@ -48,7 +49,6 @@ function TeacherList () {
         });
 
         setTeachers(response.data);
-        console.log(response.data);
         handleToggleFiltersVisible();
     }
 
@@ -129,7 +129,7 @@ function TeacherList () {
                         <TeacherItem 
                             key={teacher.id} 
                             teacher={teacher}
-                            favorited={}
+                            favorited={favorites.includes(teacher.id)}
                         />)
                 })}
                 
