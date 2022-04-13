@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View , Image } from 'react-native';
+import { Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { MotiView, MotiImage, MotiText } from 'moti';
 import { RectButton } from 'react-native-gesture-handler';
@@ -26,8 +26,6 @@ function Landing() {
         navigation.navigate('Study');
     }
 
-    
-    
     useEffect(() => { api.get('connections').then(response => { 
         const { total } = response.data;
         setTotalConnections(total);
